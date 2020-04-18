@@ -123,7 +123,6 @@ def convert_kitti_to_tfrecords(data_dir, output_path, classes_to_use,
     # don't overlap with a dontcare region.
     # TODO(talremez) filter out targets that are truncated or heavily occluded.
     annotation_for_image = filter_annotations(img_anno, classes_to_use)
-
     example = prepare_example(image_path, annotation_for_image, label_map_dict)
     if is_validation_img:
       val_writer.write(example.SerializeToString())
@@ -257,7 +256,7 @@ def filter_annotations(img_all_annotations, used_classes):
       for key in img_all_annotations.keys():
         img_filtered_annotations[key] = (
             img_filtered_annotations[key][np.logical_not(boxes_to_remove)])
-
+  print(img_filtered_annotations)
   return img_filtered_annotations
 
 
