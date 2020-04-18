@@ -1,0 +1,8 @@
+learn
+
+*.tar.gz
+model.*
+*.pb
+*.pbtxt
+events*
+
