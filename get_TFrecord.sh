@@ -10,8 +10,8 @@ mkdir -p $DATA_DIR/kitti/image_2
 mkdir -p $DATA_DIR/kitti/label_2
 cp -R $DATA_DIR/img/* $DATA_DIR/kitti/image_2/
 cp -R $DATA_DIR/lab_kitti_train/* $DATA_DIR/kitti/label_2/
+cp $DATA_DIR/label_map.pbtxt ./learn/
 
-mkdir -p $TFREC_DIR
 cd  "$TF_BASE"
 python ${CURRENT}/src/create_kitti_tf_record.py \
   --classes_to_use 'pig_s,pig_l' \

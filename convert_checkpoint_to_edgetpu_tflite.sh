@@ -5,39 +5,17 @@ set -e
 # Echo each command, easier for debugging.
 set -x
 
-usage() {
-  cat << END_OF_USAGE
-  Converts TensorFlow checkpoint to EdgeTPU-compatible TFLite file.
-
-  --checkpoint_num  Checkpoint number, by default 0.
-  --help            Display this help.
-END_OF_USAGE
-}
 
 ckpt_number=0
-while [[ $# -gt 0 ]]; do
-  case "$1" in
-    --checkpoint_num)
-      ckpt_number=$2
-      shift 2 ;;
-    --help)
-      usage
-      exit 0 ;;
-    --*)
-      echo "Unknown flag $1"
-      usage
-      exit 1 ;;
-  esac
-done
-
 source "$PWD/constants.sh"
 
-mkdir "${OUTPUT_DIR}"
+#mkdir "${OUTPUT_DIR}"
 
 echo "GENERATING label file..."
-echo "0 Abyssinian" >> "${OUTPUT_DIR}/labels.txt"
-echo "1 american_bulldog" >> "${OUTPUT_DIR}/labels.txt"
+echo "0 pig_s" >> "${OUTPUT_DIR}/labels.txt"
+echo "1 pig_l" >> "${OUTPUT_DIR}/labels.txt"
 
+cd $TF_BASE
 echo "EXPORTING frozen graph from checkpoint..."
 python object_detection/export_tflite_ssd_graph.py \
   --pipeline_config_path="${CKPT_DIR}/pipeline.config" \
