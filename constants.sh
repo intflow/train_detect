@@ -19,10 +19,11 @@ config_filename_map["mobilenet_v2_ssd-false"]="pipeline_mobilenet_v2_ssd_retrain
 INPUT_TENSORS='normalized_input_image_tensor'
 OUTPUT_TENSORS='TFLite_Detection_PostProcess,TFLite_Detection_PostProcess:1,TFLite_Detection_PostProcess:2,TFLite_Detection_PostProcess:3'
 
-TF_BASE="/tensorflow/models/research"
-OBJ_DET_DIR="$PWD"
-LEARN_DIR="${OBJ_DET_DIR}/learn"
-DATASET_DIR="/DL_data/piglet1_201911_sungil/kitti"
+TF_BASE="/works/tensorflow/models/research"
+WORK_DIR="$PWD"
+LEARN_DIR="${WORK_DIR}/learn"
+DATA_DIR="/DL_data/pig500_20200303_sungil"
+TFREC_DIR="${LEARN_DIR}/tfrecord"
 CKPT_DIR="${LEARN_DIR}/ckpt"
 TRAIN_DIR="${LEARN_DIR}/train"
 OUTPUT_DIR="${LEARN_DIR}/models"

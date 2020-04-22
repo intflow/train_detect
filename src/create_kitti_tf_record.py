@@ -96,12 +96,9 @@ def convert_kitti_to_tfrecords(data_dir, output_path, classes_to_use,
   val_count = 0
 
   annotation_dir = os.path.join(data_dir,
-                                'training',
                                 'label_2')
 
   image_dir = os.path.join(data_dir,
-                           'data_object_image_2',
-                           'training',
                            'image_2')
 
   train_writer = tf.python_io.TFRecordWriter('%s_train.tfrecord'%
@@ -173,7 +170,7 @@ def prepare_example(image_path, annotations, label_map_dict):
       'image/source_id': dataset_util.bytes_feature(image_path.encode('utf8')),
       'image/key/sha256': dataset_util.bytes_feature(key.encode('utf8')),
       'image/encoded': dataset_util.bytes_feature(encoded_png),
-      'image/format': dataset_util.bytes_feature('png'.encode('utf8')),
+      'image/format': dataset_util.bytes_feature('jpg'.encode('utf8')),
       'image/object/bbox/xmin': dataset_util.float_list_feature(xmin_norm),
       'image/object/bbox/xmax': dataset_util.float_list_feature(xmax_norm),
       'image/object/bbox/ymin': dataset_util.float_list_feature(ymin_norm),
