@@ -38,3 +38,7 @@ tflite_convert \
   --allow_custom_ops
 
 echo "TFLite graph generated at ${OUTPUT_DIR}/output_tflite_graph.tflite"
+
+
+echo "CONVERTING TF Lite to EdgeTPU file
+edgetpu_compiler learn/models/output_tflite_graph.tflite
