@@ -8,7 +8,10 @@ set -x
 
 source "$PWD/constants.sh"
 
-mkdir "${TRAIN_DIR}"
+NUM_TRAINING_STEPS=50000 && \
+NUM_EVAL_STEPS=2000
+
+mkdir -p "${TRAIN_DIR}"
 
 cd "$TF_BASE"
 python object_detection/model_main.py \

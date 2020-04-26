@@ -6,14 +6,14 @@ set -e
 set -x
 
 
-ckpt_number=0
+ckpt_number=19346
 source "$PWD/constants.sh"
 
-#mkdir "${OUTPUT_DIR}"
+mkdir -p "${OUTPUT_DIR}"
 
-echo "GENERATING label file..."
-echo "0 pig_s" >> "${OUTPUT_DIR}/labels.txt"
-echo "1 pig_l" >> "${OUTPUT_DIR}/labels.txt"
+#echo "GENERATING label file..."
+#echo "0 pig_s" >> "${OUTPUT_DIR}/labels.txt"
+#echo "1 pig_l" >> "${OUTPUT_DIR}/labels.txt"
 
 cd $TF_BASE
 echo "EXPORTING frozen graph from checkpoint..."
@@ -40,5 +40,5 @@ tflite_convert \
 echo "TFLite graph generated at ${OUTPUT_DIR}/output_tflite_graph.tflite"
 
 
-echo "CONVERTING TF Lite to EdgeTPU file
-edgetpu_compiler learn/models/output_tflite_graph.tflite
+echo "CONVERTING TF Lite to EdgeTPU file"
+edgetpu_compiler learn/models/output_tflite_graph.tflite -m 13 -o learn/models/

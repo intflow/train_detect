@@ -14,7 +14,7 @@ cp $DATA_DIR/label_map.pbtxt ./learn/
 
 cd  "$TF_BASE"
 python ${CURRENT}/src/create_kitti_tf_record.py \
-  --classes_to_use 'pig_s,pig_l' \
+  --classes_to_use 'pig' \
   --data_dir "${DATA_DIR}/kitti" \
   --label_map_path "${DATA_DIR}/label_map.pbtxt" \
   --output_path "${TFREC_DIR}" \
